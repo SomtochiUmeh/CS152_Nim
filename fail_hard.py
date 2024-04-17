@@ -1,12 +1,39 @@
 class Nim:
+    """A class representing the Nim game."""
+
     def __init__(self, piles):
+        """
+        Initializes a Nim game instance with the specified piles configuration.
+
+        Args:
+            piles (list): A list containing the number of stones in each pile.
+        """
         self.piles = piles
 
     def evaluate(self, piles, is_maximizing):
+        """
+        Evaluates the current game state.
+
+        Args:
+            piles (list): A list representing the current state of the piles.
+            is_maximizing (bool): A boolean indicating whether it's the maximizing player's turn.
+
+        Returns:
+            int: The evaluation score of the current game state.
+        """
         if all(pile == 0 for pile in piles):
             return 1 if is_maximizing else -1
 
     def possible_new_states(self, piles):
+        """
+        Generates possible new states from the current state.
+
+        Args:
+            piles (list): A list representing the current state of the piles.
+
+        Yields:
+            list: A new state resulting from a possible move.
+        """
         for i, pile in enumerate(piles):
             for stones in range(1, pile + 1):
                 new_piles = piles[:i] + [pile - stones] + piles[i + 1 :]
@@ -14,6 +41,18 @@ class Nim:
 
     # fail-hard alpha beta pruning
     def alpha_beta(self, piles, is_maximizing, alpha, beta):
+        """
+        Perform fail-hard alpha-beta pruning to determine the best move.
+
+        Args:
+            piles (list): A list representing the current state of the piles.
+            is_maximizing (bool): A boolean indicating whether it's the maximizing player's turn.
+            alpha (float): The alpha value for alpha-beta pruning.
+            beta (float): The beta value for alpha-beta pruning.
+
+        Returns:
+            int: The score associated with the best move.
+        """
         score = self.evaluate(tuple(piles), is_maximizing)
         if score:
             return score
@@ -40,6 +79,13 @@ class Nim:
         return best_score
 
     def ai_move(self):
+        """
+        Computes the best move for the AI player using the alpha-beta pruning variant of the minimax algorithm.
+
+        Returns:
+            tuple: A tuple containing the index of the pile to remove stones from and the number
+            of stones to remove for the best move.
+        """
         best_score = -float("inf")
         best_move = None
         for i, pile in enumerate(self.piles):

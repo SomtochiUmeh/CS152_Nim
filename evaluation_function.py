@@ -2,7 +2,15 @@ import random
 
 
 class Nim:
+    """A class representing the Nim game."""
+
     def __init__(self, piles):
+        """
+        Initializes a Nim game instance with the specified piles configuration.
+
+        Args:
+            piles (list): A list containing the number of stones in each pile.
+        """
         self.piles = piles
 
     def ai_move(self):

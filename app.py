@@ -5,7 +5,6 @@ from flask import Flask, redirect, render_template, request, session, url_for
 from minimax import Nim as MinimaxNim
 
 app = Flask(__name__)
-app.secret_key = "your_secret_key"
 
 nim_implementations = {
     "eval_func": EvalFuncNim,
@@ -17,11 +16,25 @@ nim_implementations = {
 
 @app.route("/")
 def index():
+    """
+    Renders the index page where users pick their AI opponent.
+
+    Returns:
+        str: The rendered HTML content of the index page.
+    """
     return render_template("index.html")
 
 
 @app.route("/play", methods=["POST"])
 def play():
+    """
+    Handles the "/play" route.
+    Retrieves the chosen Nim implementation type from the form data,
+    initializes the game session, and redirects to the game page.
+
+    Returns:
+        Response: A redirect response to the game page.
+    """
     nim_type = request.form["nim_type"]
     # Nim = nim_implementations[nim_type]
     session["nim_type"] = nim_type
@@ -33,6 +46,13 @@ def play():
 
 @app.route("/game")
 def game():
+    """
+    Renders the game page with the current game state,
+    including piles, moves, and Nim type.
+
+    Returns:
+        str: The rendered HTML content of the game page.
+    """
     return render_template(
         "game.html",
         piles=session["piles"],
@@ -43,6 +63,14 @@ def game():
 
 @app.route("/move", methods=["POST"])
 def move():
+    """
+    Handles the "/move" route.
+    Processes the player's move, updates the game state, and performs the AI move.
+    Redirects to the game page after each move.
+
+    Returns:
+        Response: A redirect response to the game page.
+    """
     pile = int(request.form["pile"])
     stones = int(request.form["stones"])
     session["piles"][pile] -= stones
