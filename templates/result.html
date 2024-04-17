@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Game Over</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        .container {
+            max-width: 600px;
+            margin-top: 100px;
+        }
+        h1 {
+            font-size: 48px;
+            font-weight: bold;
+            color: #6c63ff;
+            margin-bottom: 30px;
+        }
+        .winner {
+            font-size: 36px;
+            font-weight: bold;
+            color: #28a745;
+            margin-bottom: 30px;
+        }
+        .move-history {
+            margin-top: 30px;
+            margin-bottom: 30px;
+        }
+        .move-history h2 {
+            font-size: 24px;
+            font-weight: bold;
+            color: #6c63ff;
+            margin-bottom: 10px;
+        }
+        .move-history ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        .move-history li {
+            margin-bottom: 5px;
+        }
+        .btn-primary {
+            background-color: #6c63ff;
+            border-color: #6c63ff;
+        }
+        .btn-primary:hover {
+            background-color: #544dff;
+            border-color: #544dff;
+        }
+    </style>
+</head>
+<body>
+    <div class="container text-center">
+        <h1><i class="bi bi-trophy"></i> Game Over</h1>
+        <p class="winner"><i class="bi bi-emoji-sunglasses"></i> {{ winner }} wins!</p>
+        <div class="move-history">
+            <h2><i class="bi bi-clock-history"></i> Move History</h2>
+            <ul>
+                {% for move in moves %}
+                    <li>{{ move }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+        <a href="{{ url_for('index') }}" class="btn btn-primary btn-lg"><i class="bi bi-arrow-repeat"></i> Play again</a>
+    </div>
+</body>
+</html>

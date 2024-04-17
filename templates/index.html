@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Nim Game</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        .container {
+            max-width: 400px;
+            margin-top: 100px;
+        }
+        h1 {
+            font-size: 48px;
+            font-weight: bold;
+            color: #6c63ff;
+            margin-bottom: 30px;
+        }
+        .form-select {
+            margin-bottom: 20px;
+        }
+        .btn-primary {
+            background-color: #6c63ff;
+            border-color: #6c63ff;
+        }
+        .btn-primary:hover {
+            background-color: #544dff;
+            border-color: #544dff;
+        }
+    </style>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <div class="container text-center">
+        <h1><i class="bi bi-controller"></i> Nim Game</h1>
+        <form action="{{ url_for('play') }}" method="post">
+            <select name="nim_type" id="nim_type" class="form-select">
+                <option value="eval_func">Evaluation Function</option>
+                <option value="fail_hard">Fail Hard Minimax</option>
+                <option value="fail_soft">Fail Soft Minimax</option>
+                <option value="minimax">Minimax</option>
+            </select>
+            <button type="submit" class="btn btn-primary btn-lg"><i class="bi bi-play-circle"></i> Play</button>
+        </form>
+    </div>
+</body>
+</html>
