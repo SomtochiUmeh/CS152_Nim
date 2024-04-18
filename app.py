@@ -5,6 +5,7 @@ from flask import Flask, redirect, render_template, request, session, url_for
 from minimax import Nim as MinimaxNim
 
 app = Flask(__name__)
+app.secret_key = "shhh"
 
 nim_implementations = {
     "eval_func": EvalFuncNim,
