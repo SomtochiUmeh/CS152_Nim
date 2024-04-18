@@ -9,6 +9,7 @@ This project implements the classic game of Nim with multiple AI opponents using
   - [Minimax](#minimax)
   - [Fail-Soft Alpha-Beta Pruning](#fail-soft-alpha-beta-pruning)
   - [Fail-Hard Alpha-Beta Pruning](#fail-hard-alpha-beta-pruning)
+- [Video Demo](#video-demo)
 - [Getting Started](#getting-started)
 - [Project Structure](#project-structure)
 - [Contributing](#contributing)
@@ -34,6 +35,10 @@ The fail-soft alpha-beta pruning AI opponent is an optimized version of the mini
 
 ### Fail-Hard Alpha-Beta Pruning
 The fail-hard alpha-beta pruning AI opponent is similar to the fail-soft variant but strictly limits the returned value to be within the alpha and beta bounds. If a node's value exceeds the bounds, the search is immediately terminated for that branch. This approach can lead to earlier cutoffs and faster search but may miss potentially better moves.
+
+## Video Demo
+https://github.com/SomtochiUmeh/CS152_Nim/assets/74836691/76afebd5-f51f-4261-a3af-d0323b626755
+
 
 ## Getting Started
 To run the Nim game locally, follow these steps:
